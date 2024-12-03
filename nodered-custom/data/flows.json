@@ -1,0 +1,490 @@
+[
+    {
+        "id": "0eebfad6bc324198",
+        "type": "tab",
+        "label": "MQTT",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ab68d3e55377ff90",
+        "type": "tab",
+        "label": "RabbitMQ",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "bc08f171f914f57f",
+        "type": "tab",
+        "label": "Influxdb",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9aa3d3783a979e75",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "host.docker.internal",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ce0380d55dea6df4",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "host.docker.internal",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "522adff7b656c80c",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "host.docker.internal",
+        "port": "3306",
+        "db": "NODERED",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "c30cd8040eaf2b3d",
+        "type": "amqp-broker",
+        "name": "",
+        "host": "host.docker.internal",
+        "port": "5672",
+        "vhost": "/",
+        "tls": false,
+        "credsFromSettings": false
+    },
+    {
+        "id": "7b42b47058390bc4",
+        "type": "amqp-broker",
+        "name": "",
+        "host": "host.docker.internal",
+        "port": "5672",
+        "vhost": "/",
+        "tls": false,
+        "credsFromSettings": false
+    },
+    {
+        "id": "06c026b3dafeff04",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://host.docker.internal:8086",
+        "timeout": "10",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "1fb61366e1c83e4b",
+        "type": "mqtt out",
+        "z": "0eebfad6bc324198",
+        "name": "",
+        "topic": "/sensors/1",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ce0380d55dea6df4",
+        "x": 510,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "d7d62374de65de0f",
+        "type": "inject",
+        "z": "0eebfad6bc324198",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 100,
+        "wires": [
+            [
+                "f638468bdcfa1f2f"
+            ]
+        ]
+    },
+    {
+        "id": "4cd653c60d1bab07",
+        "type": "mqtt in",
+        "z": "0eebfad6bc324198",
+        "name": "",
+        "topic": "/sensors/1",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "9aa3d3783a979e75",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 160,
+        "wires": [
+            [
+                "1235b357077361df"
+            ]
+        ]
+    },
+    {
+        "id": "8fb7417a79a7ef34",
+        "type": "debug",
+        "z": "0eebfad6bc324198",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "f638468bdcfa1f2f",
+        "type": "function",
+        "z": "0eebfad6bc324198",
+        "name": "function 1",
+        "func": "msg.payload = { \"temperature\": 30, \"humidity\": 60 }\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 100,
+        "wires": [
+            [
+                "1fb61366e1c83e4b"
+            ]
+        ]
+    },
+    {
+        "id": "1235b357077361df",
+        "type": "function",
+        "z": "0eebfad6bc324198",
+        "name": "function 2",
+        "func": "msg.topic = \"INSERT INTO Temperature(value, sensor) VALUES(\" + msg.payload.temperature + \", 'MQTT Sensor 1')\"\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 160,
+        "wires": [
+            [
+                "8fb7417a79a7ef34",
+                "d7053962f0bf6e06"
+            ]
+        ]
+    },
+    {
+        "id": "d7053962f0bf6e06",
+        "type": "mysql",
+        "z": "0eebfad6bc324198",
+        "mydb": "522adff7b656c80c",
+        "name": "",
+        "x": 510,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ba041d7be9ba8bfa",
+        "type": "amqp-out",
+        "z": "ab68d3e55377ff90",
+        "name": "",
+        "broker": "c30cd8040eaf2b3d",
+        "exchangeName": "smarthome",
+        "exchangeType": "direct",
+        "exchangeRoutingKey": "livingroom.temperature",
+        "exchangeRoutingKeyType": "str",
+        "exchangeDurable": true,
+        "amqpProperties": "{ \"headers\": {} }",
+        "rpcTimeoutMilliseconds": 3000,
+        "outputs": 0,
+        "x": 480,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a508a2effb8241eb",
+        "type": "inject",
+        "z": "ab68d3e55377ff90",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{ \"sensor\": \"Temperature\", \"value\": \"20\"}",
+        "payloadType": "str",
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "ba041d7be9ba8bfa"
+            ]
+        ]
+    },
+    {
+        "id": "0f2b7f0f24987911",
+        "type": "amqp-in",
+        "z": "ab68d3e55377ff90",
+        "name": "",
+        "broker": "7b42b47058390bc4",
+        "prefetch": 0,
+        "noAck": true,
+        "exchangeName": "smarthome",
+        "exchangeType": "direct",
+        "exchangeRoutingKey": "livingroom.temperature, livingroom.humidity",
+        "exchangeDurable": true,
+        "queueName": "",
+        "queueExclusive": true,
+        "queueDurable": false,
+        "queueAutoDelete": true,
+        "headers": "{}",
+        "x": 270,
+        "y": 280,
+        "wires": [
+            [
+                "1ed0a3d531295bb4"
+            ]
+        ]
+    },
+    {
+        "id": "1ed0a3d531295bb4",
+        "type": "debug",
+        "z": "ab68d3e55377ff90",
+        "name": "Gateway Received Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "9090fdacdeec741f",
+        "type": "inject",
+        "z": "ab68d3e55377ff90",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{ \"sensor\": \"Humidity\", \"value\": \"30\"}",
+        "payloadType": "str",
+        "x": 130,
+        "y": 200,
+        "wires": [
+            [
+                "557c9d0e4fc619f7"
+            ]
+        ]
+    },
+    {
+        "id": "557c9d0e4fc619f7",
+        "type": "amqp-out",
+        "z": "ab68d3e55377ff90",
+        "name": "",
+        "broker": "c30cd8040eaf2b3d",
+        "exchangeName": "smarthome",
+        "exchangeType": "direct",
+        "exchangeRoutingKey": "livingroom.humidity",
+        "exchangeRoutingKeyType": "str",
+        "exchangeDurable": true,
+        "amqpProperties": "{ \"headers\": {} }",
+        "rpcTimeoutMilliseconds": 3000,
+        "outputs": 0,
+        "x": 470,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "706d5381aca2d918",
+        "type": "influxdb out",
+        "z": "bc08f171f914f57f",
+        "influxdb": "06c026b3dafeff04",
+        "name": "",
+        "measurement": "powerconsumption",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "univaq",
+        "bucket": "se4iot",
+        "x": 510,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "e14bf5bc689b0c3c",
+        "type": "inject",
+        "z": "bc08f171f914f57f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 60,
+        "wires": [
+            [
+                "91f6b9ced70d1a88"
+            ]
+        ]
+    },
+    {
+        "id": "91f6b9ced70d1a88",
+        "type": "function",
+        "z": "bc08f171f914f57f",
+        "name": "function 3",
+        "func": "let power = String(Math.floor(Math.random() * (600 - 200) + 200))\nmsg.payload = {\n    \"device\": \"device2\",\n    \"host\": \"NodeRed\",\n    \"power\": power+\"i\"\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 60,
+        "wires": [
+            [
+                "a5ab299ae1d4aee0",
+                "706d5381aca2d918"
+            ]
+        ]
+    },
+    {
+        "id": "a5ab299ae1d4aee0",
+        "type": "debug",
+        "z": "bc08f171f914f57f",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 60,
+        "wires": []
+    }
+]
