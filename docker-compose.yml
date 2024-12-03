@@ -99,6 +99,23 @@ services:
     networks:
       - tasluf-network
 
+  grafana:
+    container_name: tasluf-grafana
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000" # Expose Grafana on port 3000
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin # Grafana admin username
+      - GF_SECURITY_ADMIN_PASSWORD=admin # Grafana admin password
+    depends_on:
+      - influxdb
+    networks:
+      tasluf-network:
+        ipv4_address: 172.40.0.106
+    volumes:
+      - ./grafana/data:/var/lib/grafana # Persistent storage for Grafana
+
+
 networks:
   tasluf-network:
     driver: bridge
